@@ -1,0 +1,28 @@
+<!Doctype HTML>
+<head>
+    <title> BenderBlogs </title>
+    <link rel="stylesheet" type="text/css" href="navbar.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <nav>
+        <div id="hamburger_icon_container">
+            <img id = "hamburger_icon" src="hamburger_icon.svg"/>
+        </div>
+        <div class="display_inactive" id="desktop_nav">
+            <a href="/" ><div class = "options"><p class = "option">{{options.0}}</p></div></a>
+            <a href="{{options.1}}"><div class = "options"> <p class = "option">{{options.1}}</p></div></a>
+            <a href="{{options.2}}"><div class = "options"> <p class = "option">{{options.2}}</p></div></a>
+            <a href="{{options.3}}"><div class = "options"> <p class = "option">{{options.3}}</p></div></a>
+        </div>
+    </nav>
+    <div id="home_img_container">
+        <span id = "home_img_centered_text">{{content.main_text}}</span>
+    </div>
+    <div id = "main_text">
+        <p id="content">{{content.more_text}}</p>
+    </div>
+    <script src="navbar.js"></script>
+</body>
