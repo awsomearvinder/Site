@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <nav id = "site_nav">
+    <nav id="site_nav">
         <div id="hamburger_icon_container">
             <img id = "hamburger_icon" src="hamburger_icon.svg"/>
         </div>
@@ -17,11 +17,5 @@
             {% endfor %}
         </ul>
     </nav>
-    <div id="home_img_container">
-        <span id = "home_img_centered_text">{{content.main_text}}</span>
-    </div>
-    <div id = "main_text">
-        <p id="content">{{content.more_text}}</p>
-    </div>
     <script src="navbar.js"></script>
 </body>

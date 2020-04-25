@@ -1,6 +1,6 @@
 #![feature(proc_macro_hygiene, decl_macro)]
-#[macro_use]
-extern crate rocket;
+use rocket;
+use rocket::{get, routes};
 
 use rocket_contrib::{serve::StaticFiles, templates::Template};
 
@@ -10,8 +10,7 @@ fn main() {
     rocket::ignite()
         .attach(Template::fairing())
         .mount("/", StaticFiles::from("static"))
-        .mount("/Blog", routes![blog])
-        .mount("/", routes![index])
+        .mount("/", routes![index, blog, home])
         .launch();
 }
 
@@ -20,7 +19,13 @@ fn index() -> Template {
     let context = site::SitePage::new(site::Home::new());
     Template::render("index", &context)
 }
+
+#[get("/Home")]
+fn home() -> Template {
+    index()
+}
 #[get("/Blog")]
-fn blog() -> String {
-    String::from("<h1> Fuck you stevie. </h1>")
+fn blog() -> Template {
+    let context = site::SitePage::new(site::BlogHome::new());
+    Template::render("blog_home", &context)
 }

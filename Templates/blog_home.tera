@@ -1,0 +1,47 @@
+<!Doctype HTML>
+<head>
+    <title> BenderBlogs </title>
+    <link rel="stylesheet" type="text/css" href="navbar.css">
+    <link rel="stylesheet" type="text/css" href="blog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <nav id="site_nav">
+        <div id="hamburger_icon_container">
+            <img id = "hamburger_icon" src="hamburger_icon.svg"/>
+        </div>
+        <ul class="display_inactive" id="desktop_nav">
+            {% for option in options %}
+                <a href="{{option}}" ><div class = "options"><li class = "option">{{option}}</span></li></div></a>
+            {% endfor %}
+        </ul>
+    </nav>
+    <div id="content">
+        <nav id="blog_nav" class="display_inactive">
+            <ul>
+                <h3> Blog Posts: </h3>
+                {% for post in content.posts %}
+                    <li class="blog_links"><a href={{"/Blog/" ~ post.name}}>{{post.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <div id="more_content">
+            <img src="arrow.svg" id="arrow"/>
+            <ul class = "blog_posts">
+            {% for post in content.posts%}
+                <li class = "blog_post"> 
+                    {{post.content}}
+                    <span class="overlay">
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+       <link rel="stylesheet"
+      href="/styles/github.css">
+<script src="/highlight.js"></script>
+    <script src="/blog.js"></script>
+    <script src="/blog_home.js"></script> 
+    <script src="navbar.js"></script>
+</body>
