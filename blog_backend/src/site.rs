@@ -7,8 +7,6 @@ use std::io;
 use std::path;
 use std::time;
 
-const HOME_DIR: &str = "/home/bender/Documents/Projects/Rust/blog";
-
 #[derive(Serialize, Debug)]
 pub struct SitePage<T> {
     options: [String; 4],
@@ -43,10 +41,9 @@ impl Home {
         Home {
             front_img: String::from("Home_img.webp"),
             main_text: String::from("I've never been good at writing."),
-            more_text: fs::read_to_string(path::PathBuf::from(format!(
-                "{}{}",
-                HOME_DIR, "/static/content/introduction_text.txt"
-            )))
+            more_text: fs::read_to_string(path::PathBuf::from(
+                "../blog_frontend/static/content/introduction_text.txt",
+            ))
             .unwrap(),
         }
     }
@@ -63,7 +60,7 @@ impl BlogHome {
         let mut posts = vec![];
         //this unwrap is safe as long as directory can be read, which
         //is a valid assumption for this server 100% of the time.
-        for post in fs::read_dir("./static/blog_posts").unwrap() {
+        for post in fs::read_dir("../blog_frontend/static/blog_posts").unwrap() {
             //this unwrap is unknown.
             let post = post.unwrap();
             if post.metadata().unwrap().is_file() {
@@ -83,6 +80,7 @@ struct Post {
     timestamp: time::SystemTime,
 }
 impl Post {
+    #[allow(dead_code)]
     fn new(name: String, content: String, time: time::SystemTime) -> Self {
         Self {
             name,

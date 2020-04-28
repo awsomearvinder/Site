@@ -9,7 +9,7 @@ mod site;
 fn main() {
     rocket::ignite()
         .attach(Template::fairing())
-        .mount("/", StaticFiles::from("static"))
+        .mount("/", StaticFiles::from("../blog_frontend/static"))
         .mount("/", routes![index, blog, home])
         .launch();
 }
@@ -24,6 +24,7 @@ fn index() -> Template {
 fn home() -> Template {
     index()
 }
+
 #[get("/Blog")]
 fn blog() -> Template {
     let context = site::SitePage::new(site::BlogHome::new());

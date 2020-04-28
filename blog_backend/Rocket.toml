@@ -1,0 +1,3 @@
+[development]
+template_dir = "../blog_frontend/Templates/"
+address = "0.0.0.0"
